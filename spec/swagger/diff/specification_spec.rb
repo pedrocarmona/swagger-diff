@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Swagger::Diff::Specification do
   context 'with pet store specification' do
     let(:spec) do
-      Swagger::Diff::Specification.new('spec/fixtures/petstore-with-external-docs.json')
+      Swagger::Diff::Specification.new('spec/fixtures/petstore-with-external-docs.v2.json')
     end
 
     it '#endpoints' do
@@ -23,24 +23,24 @@ describe Swagger::Diff::Specification do
 
   describe '#parse_swagger' do
     it 'from file' do
-      spec = Swagger::Diff::Specification.new('spec/fixtures/petstore.json')
+      spec = Swagger::Diff::Specification.new('spec/fixtures/petstore.v2.json')
       expect(spec.instance_variable_get(:@parsed)['swagger']).to eq('2.0')
     end
 
     it 'from JSON string' do
-      contents = File.open('spec/fixtures/petstore.json', 'r').read
+      contents = File.open('spec/fixtures/petstore.v2.json', 'r').read
       spec = Swagger::Diff::Specification.new(contents)
       expect(spec.instance_variable_get(:@parsed)['swagger']).to eq('2.0')
     end
 
     it 'from YAML string' do
-      contents = File.open('spec/fixtures/petstore.yaml', 'r').read
+      contents = File.open('spec/fixtures/petstore.v2.yaml', 'r').read
       spec = Swagger::Diff::Specification.new(contents)
       expect(spec.instance_variable_get(:@parsed)['swagger']).to eq('2.0')
     end
 
     it 'from Hash' do
-      contents = File.open('spec/fixtures/petstore.json', 'r').read
+      contents = File.open('spec/fixtures/petstore.v2.json', 'r').read
       hash = JSON.parse(contents)
       spec = Swagger::Diff::Specification.new(hash)
       expect(spec.instance_variable_get(:@parsed)['swagger']).to eq('2.0')

@@ -42,24 +42,24 @@ describe 'swagger-diff' do
 
   it 'prints changes' do
     expect do
-      system('bundle exec exe/swagger-diff -c spec/fixtures/petstore.json ' \
-             'spec/fixtures/petstore-with-external-docs.json')
+      system('bundle exec exe/swagger-diff -c spec/fixtures/petstore.v2.json ' \
+             'spec/fixtures/petstore-with-external-docs.v2.json')
     end.to output(changes).to_stdout_from_any_process
   end
 
   it 'prints incompatibilities' do
     expect do
       system('bundle exec exe/swagger-diff -i ' \
-             'spec/fixtures/petstore-with-external-docs.json ' \
-             'spec/fixtures/petstore.json')
+             'spec/fixtures/petstore-with-external-docs.v2.json ' \
+             'spec/fixtures/petstore.v2.json')
     end.to output(differences).to_stdout_from_any_process
   end
 
   it 'prints incompatibilities if no options are specified' do
     expect do
       system('bundle exec exe/swagger-diff ' \
-             'spec/fixtures/petstore-with-external-docs.json ' \
-             'spec/fixtures/petstore.json')
+             'spec/fixtures/petstore-with-external-docs.v2.json ' \
+             'spec/fixtures/petstore.v2.json')
     end.to output(differences).to_stdout_from_any_process
   end
 

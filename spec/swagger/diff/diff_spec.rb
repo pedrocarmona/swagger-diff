@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Swagger::Diff::Diff do
   let(:compat_diff) do
-    Swagger::Diff::Diff.new('spec/fixtures/petstore.json',
-                            'spec/fixtures/petstore-with-external-docs.json')
+    Swagger::Diff::Diff.new('spec/fixtures/petstore.v2.json',
+                            'spec/fixtures/petstore-with-external-docs.v2.json')
   end
   let(:incompat_diff) do
     Swagger::Diff::Diff.new('spec/fixtures/dummy.v1.json',

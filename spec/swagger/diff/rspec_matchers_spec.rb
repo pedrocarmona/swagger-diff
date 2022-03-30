@@ -3,8 +3,8 @@ require 'spec_helper'
 describe RSpec::Matchers do
   describe 'be_compatible_with' do
     it do
-      expect('spec/fixtures/petstore-with-external-docs.json')
-        .to be_compatible_with('spec/fixtures/petstore.json')
+      expect('spec/fixtures/petstore-with-external-docs.v2.json')
+        .to be_compatible_with('spec/fixtures/petstore.v2.json')
     end
 
     it do
@@ -60,10 +60,10 @@ expected Swagger to be compatible with 'spec/fixtures/dummy.v1.json', found:
     end
 
     it 'should raise Exception when not incompatible' do
-      msg = "expected Swagger to be incompatible with 'spec/fixtures/petstore.json'"
+      msg = "expected Swagger to be incompatible with 'spec/fixtures/petstore.v2.json'"
       expect do
-        expect('spec/fixtures/petstore-with-external-docs.json')
-          .not_to be_compatible_with('spec/fixtures/petstore.json')
+        expect('spec/fixtures/petstore-with-external-docs.v2.json')
+          .not_to be_compatible_with('spec/fixtures/petstore.v2.json')
       end.to raise_error(RSpec::Expectations::ExpectationNotMetError, msg)
     end
   end
